@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlatOut 2: correção para R36S</title><meta name="description" content="Tutorial e correção da tela preta no dArkOSen, com backup dos launchers.">
+<link rel="canonical" href="https://coreilabs.github.io/flatout2-fix-r36s-darkosEN/pt-br/"><link rel="alternate" hreflang="en" href="https://coreilabs.github.io/flatout2-fix-r36s-darkosEN/"><link rel="alternate" hreflang="pt-BR" href="https://coreilabs.github.io/flatout2-fix-r36s-darkosEN/pt-br/"><link rel="alternate" hreflang="x-default" href="https://coreilabs.github.io/flatout2-fix-r36s-darkosEN/">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="FlatOut 2 · R36S Fix"><meta property="og:url" content="https://coreilabs.github.io/flatout2-fix-r36s-darkosEN/pt-br/">
+<meta property="og:title" content="FlatOut 2: correção para R36S"><meta property="og:description" content="Tutorial e correção da tela preta no dArkOSen, com backup dos launchers.">
+<meta property="og:image" content="https://coreilabs.github.io/flatout2-fix-r36s-darkosEN/assets/fix-r36s-flatout2-8a07fe076b5b5745.png"><meta property="og:image:secure_url" content="https://coreilabs.github.io/flatout2-fix-r36s-darkosEN/assets/fix-r36s-flatout2-8a07fe076b5b5745.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1672"><meta property="og:image:height" content="941"><meta property="og:image:alt" content="FlatOut 2: correção para R36S com dArkOSen">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="FlatOut 2: correção para R36S"><meta name="twitter:description" content="Tutorial e correção da tela preta no dArkOSen, com backup dos launchers."><meta name="twitter:image" content="https://coreilabs.github.io/flatout2-fix-r36s-darkosEN/assets/fix-r36s-flatout2-8a07fe076b5b5745.png"><meta name="twitter:image:alt" content="FlatOut 2: correção para R36S com dArkOSen">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/style.css?v=82f76c8771363a6c">
+</head><body>
+<a class="skip" href="#guide">Pular para o manual</a>
+<header><a class="brand" href="../index.html">FO2<span> / R36S FIX</span></a><nav aria-label="Language"><a href="../index.html" lang="en" >EN</a><a href="../pt-br/index.html" lang="pt-BR" aria-current="page">PT-BR</a></nav></header>
+<main><section class="hero"><div class="eyebrow">COMMUNITY PATCH <span>01 / dArkOSen</span></div>
+<div class="hero-grid"><div><p class="game">FLATOUT 2</p><h1>De volta à pista.</h1><p class="intro">Uma correção para a tela preta do FlatOut 2 no R36S com dArkOSen. Ajuste os launchers e preserve sua instalação.</p>
+<div class="actions"><a class="button" href="../downloads/fix-flatout2-r36s-darkosen.bat" download>Baixar correção .BAT <span>↓</span></a><a class="secondary" href="#guide">Ler o manual ↘</a></div>
+<p class="download-note">Windows · PowerShell · Execute na pasta ports</p></div>
+</div><figure class="cover"><img src="../assets/fix-r36s-flatout2-8a07fe076b5b5745.png" alt="FlatOut 2: correção para R36S com dArkOSen" width="1672" height="941" fetchpriority="high"><figcaption>FLATOUT 2 / R36S / dArkOSen</figcaption></figure>
+<div class="facts"><span>Teste confirmado pelo usuário<b>R36S + dArkOSen</b></span><span>Escopo da correção<b>Somente launchers</b></span><span>Antes de alterar<b>Verificação + backup</b></span></div></section>
+<div class="content-grid"><aside><span class="eyebrow">FIELD NOTES / 01</span><h2>Instalação e detalhes</h2><p>Escolha o BAT ou aplique os mesmos ajustes manualmente. Confira a compatibilidade antes de começar.</p><a href="../downloads/SHA256SUMS.txt">SHA-256 ↗</a><a href="../README.md">README ↗</a></aside><article id="guide"><h2>Versão do port e compatibilidade dos launchers</h2>
+<p>Versão do port informada pelo usuário que testou: <a href="https://github.com/badcats72/flatout2-portmaster/releases#release-v2.0.0" target="_blank" rel="noopener noreferrer">FlatOut 2 ARM64 port v2.0.0 ↗</a>.</p>
+<p>Atenção: o ZIP oficial da v2.0.0 contém um launcher diferente, chamado FlatOut 2.sh. Esta correção foi testada com a estrutura de dois launchers abaixo. O BAT aceita somente esses scripts exatos reconhecidos e não altera o launcher oficial da v2.0.0. A versão do binário ARM64 local não foi verificada de forma independente. A referência à release não significa que o pacote oficial intacto da v2.0.0 foi testado com este fix.</p>
+<h2>Antes de começar</h2>
+<p>Correção comunitária dos launchers do FlatOut 2 para R36S com dArkOSen. Os launchers modificados funcionaram no aparelho testado pelo usuário em 18/11/2026. Não houve medição de FPS nem validação em outros sistemas. Ainda não foi isolado qual ajuste resolveu a tela preta.</p>
+<p>Autor do port original: <a href="https://www.reddit.com/user/Green-Marzipan-8810/" target="_blank" rel="noopener noreferrer">iBadCats / u/Green-Marzipan-8810 ↗</a>. Port original: <a href="https://github.com/badcats72/flatout2-portmaster" target="_blank" rel="noopener noreferrer">badcats72/flatout2-portmaster ↗</a>. Esta adaptação independente não é uma versão oficial do autor. Não inclui arquivos do jogo nem binários ARM64.</p>
+<p>A correção atende à estrutura antiga com os dois launchers abaixo. A versão exata do binário local não foi confirmada. Releases atuais com FlatOut 2.sh não são suportadas pelo BAT; não renomeie esse launcher para contornar a verificação.</p>
+<pre tabindex="0"><code>ports/
+  fix-flatout2-r36s-darkosen.bat
+  FlatOut 2 [RK3326 - 30 FPS].sh
+  FlatOut 2 [H700 - FPS Unlock].sh
+  flatout2/
+    fo2.aarch64
+    gamedata/</code></pre>
+<h2>Correção automática no Windows</h2>
+<ol><li>Desligue o portátil e conecte o cartão de jogos a um computador Windows. Localize a pasta ports que contém flatout2/fo2.aarch64.</li><li>Baixe fix-flatout2-r36s-darkosen.bat pelo botão acima. Copie o arquivo BAT para dentro de ports, ao lado da pasta flatout2. Não execute dentro de flatout2.</li><li>Dê dois cliques no BAT. Ele usa o Windows PowerShell já instalado; não baixa dependências nem exige administrador. Leia o resultado antes de fechar a janela.</li><li>Os dois launchers reconhecidos são corrigidos se estiverem presentes; basta um deles. Todos os arquivos-alvo presentes são verificados antes de alterar qualquer launcher. Arquivos diferentes ou editados são recusados. Arquivos já corrigidos são ignorados.</li><li>Os originais são copiados integralmente para ports/flatout2/backup-r36s-fix-DATA-HORA-ID/. Os scripts corrigidos são gravados em UTF-8 sem BOM e com finais Unix LF. Executar novamente não reaplica a correção.</li><li>Ejete o cartão com segurança e teste primeiro FlatOut 2 [RK3326 - 30 FPS]. O nome do launcher mantém a seleção original do limite de 30/60 FPS; isso não garante FPS constante.</li></ol>
+<p>O BAT altera somente os launchers .sh reconhecidos e cria o backup deles. Não modifica o binário, os dados do jogo ou os saves. Ao executar o jogo, o launcher existente continua atualizando os arquivos de vídeo/configurações como já fazia; FO2_RENDER agora seleciona 640x480.</p>
+<h2>Aplicação manual</h2>
+<p>Use este método apenas na estrutura antiga e com trechos correspondentes. Faça backup dos .sh primeiro. Aplique os passos em cada launcher que utiliza, preservando o restante do script. Se a revisão for diferente, compare o código antes de colar os blocos.</p>
+<h3>1. Defina o console e o fallback de sudo</h3>
+<p>Imediatamente antes da linha SCRIPT_DIR=, insira:</p>
+<pre tabindex="0"><code>ESUDO=&quot;${ESUDO:-sudo}&quot;
+CUR_TTY=&quot;/dev/tty1&quot;</code></pre>
+<h3>2. Adicione o perfil do aparelho</h3>
+<p>Após o bloco completo que lê fo2.env (depois do fi que encerra esse bloco), e antes do comentário Savegame/device.cfg, insira:</p>
+<pre tabindex="0"><code># R36S / dArkOSen diagnostic profile. fo2.env can override these values.
+export SDL_VIDEODRIVER=&quot;${FO2_TEST_VIDEO_DRIVER:-kmsdrm}&quot;
+export SDL_AUDIODRIVER=&quot;${FO2_TEST_AUDIO_DRIVER:-alsa}&quot;
+export ALSOFT_DRIVERS=alsa
+export SDL_VIDEO_GL_DRIVER=libGLESv2.so
+export SDL_VIDEO_EGL_DRIVER=libEGL.so
+export FO2_RENDER=&quot;${FO2_TEST_RENDER:-640x480}&quot;
+export FO2_VIDEO_THREADS=&quot;${FO2_VIDEO_THREADS:-3}&quot;
+export FO2_VIDEO_FAST=&quot;${FO2_VIDEO_FAST:-1}&quot;
+# Keep the configured CPU maximum for this first diagnostic run.
+export FO2_CPU_BOOST=&quot;${FO2_CPU_BOOST:-0}&quot;
+echo &quot;[launcher] R36S dArkOSen test profile&quot;
+echo &quot;[launcher] video=$SDL_VIDEODRIVER audio=$SDL_AUDIODRIVER render=$FO2_RENDER cap=${FO2_CAP:-$DEFAULT_CAP}&quot;
+echo &quot;[launcher] CFW=${CFW_NAME:-unknown} user=$(id)&quot;
+[ -r /proc/device-tree/model ] &amp;&amp; { tr -d &#x27;\000&#x27; &lt; /proc/device-tree/model; echo; }
+ls -l /dev/dri /dev/tty1 2&gt;/dev/null
+free -m
+command -v ldd &gt;/dev/null 2&gt;&amp;1 &amp;&amp; ldd ./fo2.aarch64
+if [ -r &quot;$CUR_TTY&quot; ]; then
+  exec &lt; &quot;$CUR_TTY&quot;
+else
+  echo &quot;[launcher] Cannot read $CUR_TTY&quot;
+fi</code></pre>
+<h3>3. Substitua o trecho final de limpeza e execução</h3>
+<p>Substitua tudo a partir de cleanup() { até o fim do arquivo pelo bloco abaixo. Preserve WATCH_PID=$! e tudo que vem antes dele:</p>
+<pre tabindex="0"><code>VT_STATE=&quot;&quot;
+cleanup() {
+  kill &quot;$WATCH_PID&quot; 2&gt;/dev/null
+  for entry in $CLOCK_STATE; do wsys &quot;${entry%%=*}&quot; &quot;${entry#*=}&quot;; done
+  for entry in $VT_STATE; do wsys &quot;${entry%%=*}&quot; &quot;${entry#*=}&quot;; done
+  if [ -w &quot;$CUR_TTY&quot; ]; then printf &#x27;\033c\033[?25h&#x27; &gt; &quot;$CUR_TTY&quot;; fi
+  sync
+}
+trap cleanup EXIT
+trap &#x27;exit 130&#x27; INT
+trap &#x27;exit 143&#x27; TERM
+
+# Give SDL/KMSDRM access to the display, restoring original bindings on exit.
+if [ &quot;$SDL_VIDEODRIVER&quot; = &quot;kmsdrm&quot; ]; then
+  if [ -w &quot;$CUR_TTY&quot; ]; then printf &#x27;\033c\033[?25l&#x27; &gt; &quot;$CUR_TTY&quot;; fi
+  for bind in /sys/class/vtconsole/vtcon*/bind; do
+    [ -r &quot;$bind&quot; ] || continue
+    oldbind=$(cat &quot;$bind&quot;)
+    if wsys &quot;$bind&quot; 0; then
+      VT_STATE=&quot;$VT_STATE $bind=$oldbind&quot;
+    else
+      echo &quot;[launcher] Cannot release $bind&quot;
+    fi
+  done
+fi
+sync
+chmod +x ./fo2.aarch64
+# FO2_CAP (fo2.env): the frame rate limit. 60 lets frames alternate between one and two panel refreshes when the game
+# cannot hold 60, felt as stutter; 30 gives even frames.
+echo &quot;[launcher] Starting fo2.aarch64&quot;
+# Line buffering keeps the startup diagnostics when the console freezes.
+if command -v stdbuf &gt;/dev/null 2&gt;&amp;1; then
+  stdbuf -oL -eL ./fo2.aarch64 --cap=&quot;${FO2_CAP:-$DEFAULT_CAP}&quot;
+else
+  ./fo2.aarch64 --cap=&quot;${FO2_CAP:-$DEFAULT_CAP}&quot;
+fi
+GAME_STATUS=$?
+echo &quot;[launcher] exit code $GAME_STATUS&quot;
+exit &quot;$GAME_STATUS&quot;</code></pre>
+<h3>4. Salve e teste</h3>
+<p>Salve em UTF-8 sem BOM e com finais de linha Unix LF. No Windows, o Notepad++ permite escolher as duas opções. Ejete o cartão com segurança e teste o launcher de 30 FPS. Estes blocos reproduzem os ajustes de execução testados, incluindo os logs de diagnóstico.</p>
+<h2>O que muda</h2>
+<p>O perfil seleciona SDL KMSDRM, áudio ALSA no SDL/OpenAL, bibliotecas GLES/EGL explícitas, renderização em 640x480 e padrões de decodificação de vídeo com três threads e modo rápido. O boost de CPU fica desativado por padrão, preservando o máximo configurado; não é overclock. A lógica original do governor da GPU permanece.</p>
+<p>Abre a entrada padrão em /dev/tty1 quando há permissão de leitura, libera temporariamente os vínculos vtconsole para KMSDRM e restaura os vínculos alterados ao sair. A limpeza restaura o cursor, trata INT/TERM e preserva o código de saída do jogo. Usa stdbuf quando disponível para melhorar o registro da inicialização. Desligar à força impede a execução da limpeza.</p>
+<p>O perfil testado é forçado nesses launchers. Use os arquivos modificados no R36S/dArkOSen. Para incorporar ao port original, adicione detecção apropriada de aparelho/sistema em vez de aplicar o perfil a todos os portáteis.</p>
+<p>Overrides opcionais em ports/flatout2/fo2.env: FO2_TEST_VIDEO_DRIVER, FO2_TEST_AUDIO_DRIVER e FO2_TEST_RENDER. FO2_CPU_BOOST, FO2_VIDEO_THREADS e FO2_VIDEO_FAST mantêm o comportamento existente de override. Esses ajustes servem para diagnóstico; os padrões correspondem à configuração testada.</p>
+<h2>Restaurar ou investigar</h2>
+<p>Para desfazer, copie os .sh originais da pasta de backup de volta para ports, substituindo as cópias corrigidas. O BAT só cria backup quando realmente altera algum arquivo.</p>
+<p>Se o jogo continuar falhando, guarde ports/flatout2/log.txt e mem.txt, além de log.prev.txt e mem.prev.txt, se existirem. Se nenhum log aparecer, confira o atalho executado e a localização do port. Não substitua FlatOut2.exe sem evidência: o MD5 do executável testado é 1f8cae2b47276ca134750ba438aa35ca.</p>
+<p>O BAT verifica o texto normalizado dos launchers com SHA-256, desconsiderando BOM e diferenças CRLF/LF. Hash do texto original: a842432657cb3c9053d042b3570cbb8f8ba10fb11b4d49db7808577dd6858fa6. Hash do texto corrigido: 44e130170dc0f34039a32abc1f175252a0b331edc0c3d5e92592586e05a0b270. Essa verificação de compatibilidade não autentica o BAT baixado. SHA256SUMS.txt contém o checksum da distribuição.</p></article></div>
+</main><footer><p>Créditos do port original: <a href="https://www.reddit.com/user/Green-Marzipan-8810/" target="_blank" rel="noopener noreferrer">iBadCats / u/Green-Marzipan-8810 ↗</a></p><a href="https://github.com/badcats72/flatout2-portmaster" target="_blank" rel="noopener noreferrer">badcats72/flatout2-portmaster ↗</a><p>Adaptação comunitária independente. Sem arquivos do jogo.</p></footer>
+</body></html>

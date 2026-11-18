@@ -1,0 +1,22 @@
+{
+  "names": [
+    "FlatOut 2 [RK3326 - 30 FPS].sh",
+    "FlatOut 2 [H700 - FPS Unlock].sh"
+  ],
+  "before": "a842432657cb3c9053d042b3570cbb8f8ba10fb11b4d49db7808577dd6858fa6",
+  "after": "44e130170dc0f34039a32abc1f175252a0b331edc0c3d5e92592586e05a0b270",
+  "changes": [
+    {
+      "old": "fi\n\nSCRIPT_DIR=",
+      "new": "fi\nESUDO=\"${ESUDO:-sudo}\"\nCUR_TTY=\"/dev/tty1\"\n\nSCRIPT_DIR="
+    },
+    {
+      "old": "  done < fo2.env\nfi\n\n# Savegame/device.cfg",
+      "new": "  done < fo2.env\nfi\n\n# R36S / dArkOSen diagnostic profile. fo2.env can override these values.\nexport SDL_VIDEODRIVER=\"${FO2_TEST_VIDEO_DRIVER:-kmsdrm}\"\nexport SDL_AUDIODRIVER=\"${FO2_TEST_AUDIO_DRIVER:-alsa}\"\nexport ALSOFT_DRIVERS=alsa\nexport SDL_VIDEO_GL_DRIVER=libGLESv2.so\nexport SDL_VIDEO_EGL_DRIVER=libEGL.so\nexport FO2_RENDER=\"${FO2_TEST_RENDER:-640x480}\"\nexport FO2_VIDEO_THREADS=\"${FO2_VIDEO_THREADS:-3}\"\nexport FO2_VIDEO_FAST=\"${FO2_VIDEO_FAST:-1}\"\n# Keep the configured CPU maximum for this first diagnostic run.\nexport FO2_CPU_BOOST=\"${FO2_CPU_BOOST:-0}\"\necho \"[launcher] R36S dArkOSen test profile\"\necho \"[launcher] video=$SDL_VIDEODRIVER audio=$SDL_AUDIODRIVER render=$FO2_RENDER cap=${FO2_CAP:-$DEFAULT_CAP}\"\necho \"[launcher] CFW=${CFW_NAME:-unknown} user=$(id)\"\n[ -r /proc/device-tree/model ] && { tr -d '\\000' < /proc/device-tree/model; echo; }\nls -l /dev/dri /dev/tty1 2>/dev/null\nfree -m\ncommand -v ldd >/dev/null 2>&1 && ldd ./fo2.aarch64\nif [ -r \"$CUR_TTY\" ]; then\n  exec < \"$CUR_TTY\"\nelse\n  echo \"[launcher] Cannot read $CUR_TTY\"\nfi\n\n# Savegame/device.cfg"
+    },
+    {
+      "old": "cleanup() {\n  kill \"$WATCH_PID\" 2>/dev/null\n  for entry in $CLOCK_STATE; do wsys \"${entry%%=*}\" \"${entry#*=}\"; done\n  sync\n}\ntrap cleanup EXIT\n\nchmod +x ./fo2.aarch64\n# FO2_CAP (fo2.env): the frame rate limit. 60 lets frames alternate between one and two panel refreshes when the game\n# cannot hold 60, felt as stutter; 30 gives even frames.\n./fo2.aarch64 --cap=\"${FO2_CAP:-$DEFAULT_CAP}\"\necho \"exit code $?\"",
+      "new": "VT_STATE=\"\"\ncleanup() {\n  kill \"$WATCH_PID\" 2>/dev/null\n  for entry in $CLOCK_STATE; do wsys \"${entry%%=*}\" \"${entry#*=}\"; done\n  for entry in $VT_STATE; do wsys \"${entry%%=*}\" \"${entry#*=}\"; done\n  if [ -w \"$CUR_TTY\" ]; then printf '\\033c\\033[?25h' > \"$CUR_TTY\"; fi\n  sync\n}\ntrap cleanup EXIT\ntrap 'exit 130' INT\ntrap 'exit 143' TERM\n\n# Give SDL/KMSDRM access to the display, restoring original bindings on exit.\nif [ \"$SDL_VIDEODRIVER\" = \"kmsdrm\" ]; then\n  if [ -w \"$CUR_TTY\" ]; then printf '\\033c\\033[?25l' > \"$CUR_TTY\"; fi\n  for bind in /sys/class/vtconsole/vtcon*/bind; do\n    [ -r \"$bind\" ] || continue\n    oldbind=$(cat \"$bind\")\n    if wsys \"$bind\" 0; then\n      VT_STATE=\"$VT_STATE $bind=$oldbind\"\n    else\n      echo \"[launcher] Cannot release $bind\"\n    fi\n  done\nfi\nsync\nchmod +x ./fo2.aarch64\n# FO2_CAP (fo2.env): the frame rate limit. 60 lets frames alternate between one and two panel refreshes when the game\n# cannot hold 60, felt as stutter; 30 gives even frames.\necho \"[launcher] Starting fo2.aarch64\"\n# Line buffering keeps the startup diagnostics when the console freezes.\nif command -v stdbuf >/dev/null 2>&1; then\n  stdbuf -oL -eL ./fo2.aarch64 --cap=\"${FO2_CAP:-$DEFAULT_CAP}\"\nelse\n  ./fo2.aarch64 --cap=\"${FO2_CAP:-$DEFAULT_CAP}\"\nfi\nGAME_STATUS=$?\necho \"[launcher] exit code $GAME_STATUS\"\nexit \"$GAME_STATUS\""
+    }
+  ]
+}
